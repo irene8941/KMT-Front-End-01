@@ -23,18 +23,20 @@ window.addEventListener('hashchange', function() {
     title.innerHTML = newsContent.title;
 
     content.appendChild(title);
-    console.log(newsContent);
 });
 
 for (let i = 0 ; i < 10 ; i++) {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
+    const div = document.createElement('div');
 
-    a.href = `#${newsFeed[i].id}`;
-    a.innerHTML = `${newsFeed[i].title} (${newsFeed[i].comments_count})`;
-    
-    li.appendChild(a);
-    ul.appendChild(li);   
+    div.innerHTML = `
+    <li>
+        <a ref="#${newsFeed[i].id}">
+            s${newsFeed[i].title} (${newsFeed[i].comments_count})
+        </a>
+    </li>
+    `;
+
+    ul.appendChild(div.firstElementChild);   
 }
 
 container.appendChild(ul);
